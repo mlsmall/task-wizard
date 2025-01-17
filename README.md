@@ -92,7 +92,7 @@ This project mainly showcases a practical application of LangGraph for building 
    - Inputs can include tasks, profile information, or preference updates.
 2. **Processing User Input:**
 
-   - `task_wizard` interprets the message and uses system message prompts to guide model's reasoning and interactions.
+   - `task_wizard` interprets the message and uses system message prompts to guide the model's reasoning and interactions.
    - Determines the appropriate action; whether to update the user profile, To-Do list, or instructions.
 3. **Memory Update:**
 
@@ -177,7 +177,7 @@ User: My wife asked me to book swim lessons for our daughter.
 TaskWizard: I've added the task to your ToDo list: "Book swim lessons for daughter." You can check local swimming schools, look for community center programs, or search for private swim instructors. If you need any help with this task, just let me know!
 
 ### Updating Preferences
-User: When creating or updating ToDo items, include specific local businesses / vendors.
+User: When creating or updating ToDo items, include specific local businesses and vendors.
 
 TaskWizard: I've noted your preference to include specific local businesses or vendors when creating or updating ToDo items. If you have any specific vendors in mind for the swim lessons or any other tasks, feel free to share!
 
