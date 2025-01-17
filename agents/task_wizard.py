@@ -15,8 +15,7 @@ from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.store.base import BaseStore
 from langgraph.store.memory import InMemoryStore
 
-import configuration
-
+from  configuration import Configuration
 from memory_schemas import Profile, ToDo
 from utils import Spy, extract_tool_info
 
@@ -112,7 +111,7 @@ def TaskWizard(state: MessagesState, config: RunnableConfig, store: BaseStore):
     """Load memories from the store and use them to personalize the chatbot's response."""
     
     # Get the user ID from the config
-    configurable = configuration.Configuration.from_runnable_config(config)
+    configurable = Configuration.from_runnable_config(config)
     user_id = configurable.user_id
 
    # Retrieve profile memory from the store
@@ -148,7 +147,7 @@ def update_profile(state: MessagesState, config: RunnableConfig, store: BaseStor
     """Reflect on the chat history and update the memory collection."""
     
     # Get the user ID from the config
-    configurable = configuration.Configuration.from_runnable_config(config)
+    configurable = Configuration.from_runnable_config(config)
     user_id = configurable.user_id
 
     # Define the namespace for the memories
@@ -188,7 +187,7 @@ def update_todos(state: MessagesState, config: RunnableConfig, store: BaseStore)
     """Reflect on the chat history and update the memory collection."""
     
     # Get the user ID from the config
-    configurable = configuration.Configuration.from_runnable_config(config)
+    configurable = Configuration.from_runnable_config(config)
     user_id = configurable.user_id
 
     # Define the namespace for the memories
@@ -243,7 +242,7 @@ def update_instructions(state: MessagesState, config: RunnableConfig, store: Bas
     """Reflect on the chat history and update the memory collection."""
     
     # Get the user ID from the config
-    configurable = configuration.Configuration.from_runnable_config(config)
+    configurable = Configuration.from_runnable_config(config)
     user_id = configurable.user_id
     
     namespace = ("instructions", user_id)
@@ -281,7 +280,7 @@ def route_message(state: MessagesState, config: RunnableConfig, store: BaseStore
 
 # Create the graph + all nodes
 def build_graph():
-    builder = StateGraph(MessagesState, config_schema=configuration.Configuration)
+    builder = StateGraph(MessagesState, config_schema=Configuration)
 
     # Define the flow of the memory extraction process
     builder.add_node(TaskWizard)
